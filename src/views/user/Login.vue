@@ -1,7 +1,7 @@
 <template>
   <div class="container-wrapper animated fadeIn">
     <div class="halo-logo">
-      <img alt="Halo Logo" src="/images/logo.svg" />
+      <img alt="Sonic Logo" src="/images/logo.png" />
     </div>
     <div class="login-form">
       <LoginForm @success="onLoginSucceed" />

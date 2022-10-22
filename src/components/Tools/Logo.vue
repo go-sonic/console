@@ -2,9 +2,9 @@
   <div class="logo">
     <img
       :style="{ width: sidebarOpened ? '64px' : '48px' }"
-      alt="Halo Logo"
+      alt="Sonic Logo"
       class="select-none cursor-pointer hover:brightness-125 transition-all"
-      src="/images/logo.svg"
+      src="/images/logo.png"
       @click="onLogoClick()"
     />
   </div>

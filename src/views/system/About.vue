@@ -48,6 +48,13 @@
             </a>
           </a-card>
 
+          <a-card :bodyStyle="{ padding: '16px' }" :bordered="false" :loading="contributorsLoading" title="致谢">
+            感谢Halo，Sonic 的前端项目 Fork自Halo.
+            <a class="mr-3" href="https://halo.run" target="_blank"
+              >Halo官网
+              <a-icon type="link" />
+            </a>
+          </a-card>
           <a-card :bodyStyle="{ padding: '16px' }" :bordered="false" :loading="contributorsLoading" title="开发者">
             <a v-for="(item, index) in contributors" :key="index" :href="item.html_url" target="_blank">
               <a-tooltip :title="item.login" placement="top">
@@ -185,7 +192,7 @@ User Agent：${navigator.userAgent}`
       const _this = this
       _this.contributorsLoading = true
       axiosInstance
-        .get('/repos/halo-dev/halo/contributors?per_page=100')
+        .get('/repos/go-sonic/sonic/contributors?per_page=100')
         .then(response => {
           _this.contributors = response.data
         })
@@ -200,7 +207,7 @@ User Agent：${navigator.userAgent}`
       const _this = this
       _this.checking = true
       axiosInstance
-        .get('/repos/halo-dev/halo/releases/latest')
+        .get('/repos/go-sonic/sonic/releases/latest')
         .then(response => {
           const data = response.data
           _this.latestData = data
@@ -214,7 +221,7 @@ User Agent：${navigator.userAgent}`
             return
           }
           const title = '新版本提醒'
-          const content = '检测到 Halo 新版本：' + data.name + '，点击下方按钮查看最新版本。'
+          const content = '检测到 Sonic 新版本：' + data.name + '，点击下方按钮查看最新版本。'
           _this.$notification.open({
             message: title,
             description: content,
