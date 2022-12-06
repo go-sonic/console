@@ -50,7 +50,7 @@ import { javascript } from '@codemirror/lang-javascript'
 import { css } from '@codemirror/lang-css'
 
 const languageExtensionsMap = {
-  ftl: html(),
+  tmpl: html(),
   css: css(),
   js: javascript()
 }
