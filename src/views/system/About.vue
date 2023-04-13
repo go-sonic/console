@@ -166,6 +166,7 @@ export default {
     async getEnvironments() {
       const { data } = await apiClient.getEnvironment()
       this.environments = data
+      this.checkServerUpdate()
     },
     async handleGetActivatedTheme() {
       const { data } = await apiClient.theme.getActivatedTheme()
