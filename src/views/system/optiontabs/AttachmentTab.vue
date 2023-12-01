@@ -240,8 +240,14 @@
         </a-form-model-item>
       </div>
       <div v-show="options.attachment_type === 'MINIO'" id="minioForm">
+        <a-form-model-item label="终端节点协议：">
+          <a-select v-model="options.minio_protocol">
+            <a-select-option value="https://">HTTPS</a-select-option>
+            <a-select-option value="http://">HTTP</a-select-option>
+          </a-select>
+        </a-form-model-item>
         <a-form-model-item label="EndPoint（终端节点）：">
-          <a-input v-model="options.minio_endpoint" placeholder="Endpoint" />
+          <a-input v-model="options.minio_endpoint" placeholder="无需再加上 http:// 或者 https://" />
         </a-form-model-item>
         <a-form-model-item label="Bucket（桶名称）：">
           <a-input v-model="options.minio_bucket_name" placeholder="桶名称" />
@@ -257,6 +263,9 @@
         </a-form-model-item>
         <a-form-model-item label="文件目录：">
           <a-input v-model="options.minio_source" placeholder="不填写则上传到根目录" />
+        </a-form-model-item>
+        <a-form-model-item label="前端访问地址：">
+          <a-input v-model="options.minio_front_base" placeholder="用于前端预览的地址，需要包含 http:// 或者 https://" />
         </a-form-model-item>
       </div>
       <a-form-model-item>
@@ -565,6 +574,13 @@ export default {
           }
           break
         case 'MINIO':
+          if (!this.options.minio_protocol) {
+            this.$notification['error']({
+              message: '提示',
+              description: '协议不能为空！'
+            })
+            return
+          }
           if (!this.options.minio_endpoint) {
             this.$notification['error']({
               message: '提示',
